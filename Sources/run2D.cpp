@@ -75,6 +75,13 @@ void RunBoxPeriodic_no_3NL(Atom2D* as, LONG n, FLT dt, FLT a, FLT a_cut, FLT f0,
     double E14 = 0;
     double E15 = 0;
 
+    double E16 = 0;
+    double E17 = 0;
+    double E18 = 0;
+    double E19 = 0;
+    double E20 = 0;
+    double E21 = 0;
+
 
 //    for (i = as; i != i_end; i++)
 //	{
@@ -112,6 +119,13 @@ void RunBoxPeriodic_no_3NL(Atom2D* as, LONG n, FLT dt, FLT a, FLT a_cut, FLT f0,
 
             E8 += vx_part * vx_part * sin(PI * (double) ky / ((double) nnny)) + vy_part * vy_part;
             E9 += vy_part * vy_part * sin(PI * (double) ky / ((double) nnny)) + vx_part * vx_part;
+
+            E16 += pow(vx_part * sin(PI * (double) ky / ((double) nnny)), 2);
+            E17 += pow(vy_part * sin(PI * (double) ky / ((double) nnny)), 2);
+            E18 += pow(vsum_part * sin(PI * (double) ky / ((double) nnny)), 2);
+            E19 += pow(vx_part * sin(PI * (double) ky / ((double) nnny)) + vy_part, 2);
+            E20 += pow(vy_part * sin(PI * (double) ky / ((double) nnny)) + vx_part, 2);
+            E21 += pow((vx_part + vy_part) * sin(PI * (double) ky / ((double) nnny)), 2);
 
 
 		    if (kx == middle){
@@ -157,7 +171,7 @@ void RunBoxPeriodic_no_3NL(Atom2D* as, LONG n, FLT dt, FLT a, FLT a_cut, FLT f0,
     sprintf(file_name1, filename.c_str());
     FILE* fv_BB  = fopen(file_name1,"a");
     //fprintf(fv_BB, "%s%d%s%f%s%f", "Step: ", s, " E_x: ", Ex_sum, " E_y: ", Ey_sum);
-    fprintf(fv_BB, "%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f", s*dt/To, " ", E1, " ", E2, " ", E3, " ", E4, " ", E5, " ", E6, " ", E7, " ", E8, " ", E9, " ", E10, " ", E11, " ", E12, " ", E13, " ", E14, " ", E15);  //текущее
+    fprintf(fv_BB, "%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f%s%f", s*dt/To, " ", E1, " ", E2, " ", E3, " ", E4, " ", E5, " ", E6, " ", E7, " ", E8, " ", E9, " ", E10, " ", E11, " ", E12, " ", E13, " ", E14, " ", E15, " ", E16, " ", E17, " ", E18, " ", E19, " ", E20, " ", E21);  //текущее
 //    fprintf(fv_BB, "%f%s%f%s%f", s*dt/To, " ", Ex_sum/Ex0, " ", Ey_sum/Ex0);     //вывод по отдельности
     fprintf(fv_BB, "%s", "\n");
 

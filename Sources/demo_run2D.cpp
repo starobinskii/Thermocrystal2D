@@ -38,7 +38,7 @@ void Run2D_Demo(const int iter, const int rank)
 	const FLT dt	 = 0.5	* To / 100;	// time step for computation
 	const FLT v0     = 0.01*vo;      //было 0.1*vo,
 	const FLT a_cut  = 1.25 * ao;
-	const FLT s_max  = 10*round(To/dt);		// max number of calculation steps
+	const FLT s_max  = 200*round(To/dt);		// max number of calculation steps
 	      int ds_a3r = 100;
             LONG n0  = n1*n2 + 1000;
 //--------------------------------------------------------
